@@ -4,6 +4,7 @@ import HangmanDrawing from './HangmanDrawing';
 import HangmanWord from './HangmanWord';
 import Keyboard from './Keyboard';
 
+
 const containerStyle: React.CSSProperties = {
     maxWidth: "800px",
     display: "flex",
@@ -28,7 +29,7 @@ const App = () => {
     return (
         <div style={containerStyle}>
             <div style={titleStyle}>Lose Win</div>
-            <HangmanDrawing />
+            <HangmanDrawing/>
             <HangmanWord />
             <Keyboard />
         </div>
