@@ -3,8 +3,7 @@ import words from './wordlList.json';
 import HangmanDrawing from './HangmanDrawing';
 import HangmanWord from './HangmanWord';
 import Keyboard from './Keyboard';
-
-
+import "./index.css"
 
 
 const containerStyle: CSSProperties = {
@@ -28,11 +27,13 @@ const App: FC = () => {
 
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
+
     return (
         <div style={containerStyle}>
             <div style={titleStyle}>Lose Win</div>
             <HangmanDrawing/>
             <HangmanWord />
+            {/* ! The keyboard container has to be stretched for the grid container to work. */}
             <div style={{alignSelf: "stretch"}}>
                 <Keyboard/>
             </div>

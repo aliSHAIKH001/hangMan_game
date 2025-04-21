@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './keyboard.module.css'
 
 const containerStyle:React.CSSProperties = {
     display: "grid",
@@ -13,7 +14,9 @@ const Keyboard: React.FC = () => {
         <div style={containerStyle}>
             {KEYS.map(key => {
                 return (
-                    <button key={key}>{key}</button>
+                    <button className={styles.btn} key={key}>
+                        {key}
+                    </button>
                 )
             })}
         </div>
