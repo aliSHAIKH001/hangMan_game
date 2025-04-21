@@ -37,6 +37,17 @@ const headStyle: React.CSSProperties = {
 const HEAD = (
     <div style={headStyle}/>
 )
+const neckStyle:React.CSSProperties = {
+    width: "10px",
+    height: "20px",
+    backgroundColor: "black",
+    position: "absolute",
+    top: "100px",
+    right: 0,
+}
+const NECK = (
+    <div style={neckStyle}></div>
+)
 const bodyStyle: React.CSSProperties = {
     width: "10px",
     height: "100px",
@@ -49,12 +60,12 @@ const BODY = (
     <div style={bodyStyle}></div>
 )
 const rightArmStyle: React.CSSProperties = {
-    width: "100px",
+    width: "90px",
     height: "10px",
     backgroundColor: "black",
     position: "absolute",
     top: "150px",
-    right: "-100px",
+    right: "-90px",
     rotate: "-30deg",
     transformOrigin: "bottom left"
 }
@@ -62,7 +73,7 @@ const RIGHT_ARM = (
     <div style={rightArmStyle}></div>
 )
 const leftArmStyle: React.CSSProperties = {
-    width: "100px",
+    width: "90px",
     height: "10px",
     backgroundColor: "black",
     position: "absolute",
@@ -75,12 +86,12 @@ const LEFT_ARM = (
     <div style={leftArmStyle}></div>
 )
 const rightLegStyle: React.CSSProperties = {
-    width: "100px",
+    width: "90px",
     height: "10px",
     backgroundColor: "black",
     position: "absolute",
     top: "210px",
-    right: "-90px",
+    right: "-80px",
     rotate: "60deg",
     transformOrigin: "bottom left"
 }
@@ -88,7 +99,7 @@ const RIGHT_LEG = (
     <div style={rightLegStyle}></div>
 )
 const leftLegStyle: React.CSSProperties = {
-    width: "100px",
+    width: "90px",
     height: "10px",
     backgroundColor: "black",
     position: "absolute",
@@ -100,7 +111,7 @@ const leftLegStyle: React.CSSProperties = {
 const LEFT_LEG = (
     <div style={leftLegStyle}></div>
 )
-const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
+const BODY_PARTS = [HEAD, NECK,  BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
 type HangManDrawingProps = {
     numberOfGuesses: number
 }

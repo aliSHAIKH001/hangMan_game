@@ -1,4 +1,4 @@
-import {useState, CSSProperties, FC, useEffect} from 'react';
+import {useState, CSSProperties, FC, useEffect, useCallback} from 'react';
 import words from './wordlList.json';
 import HangmanDrawing from './HangmanDrawing';
 import HangmanWord from './HangmanWord';
@@ -29,25 +29,27 @@ const App: FC = () => {
 
     const incorrectLetters = guessedLetters.filter(letter => !wordToGuess.includes(letter))
 
-    const addGuessedLetter = (letter: string) => {
+    const addGuessedLetter = useCallback((letter: string) => {
         if (guessedLetters.includes(letter)) return
         setGuessedLetters(currentLetters => [...currentLetters, letter]);
-    }
+    }, [guessedLetters])
     useEffect(() => {
         const handler = (e: KeyboardEvent) => {
             const key = e.key;
-
             if (!key.match(/^[a-z]$/)) return
-
             e.preventDefault()
             addGuessedLetter(key);
         }
+        // ! Since the handler is an initial version, it will remember guessed letters as an empty array.
         document.addEventListener("keypress", handler)
 
         return () => {
             document.removeEventListener("keypress", handler);
         }
-    }, [])
+        // * change the useEffect each time the guessed letter changes
+    }, [guessedLetters])
+
+    console.log(guessedLetters);
 
 
     return (
@@ -57,7 +59,11 @@ const App: FC = () => {
             <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
             {/* ! The keyboard container has to be stretched for the grid container to work. */}
             <div style={{alignSelf: "stretch"}}>
-                <Keyboard/>
+                <Keyboard
+                    activeLetters={guessedLetters.filter(letter => wordToGuess.includes(letter))}
+                    inactiveLetters={incorrectLetters}
+                    addGuessedLetter={addGuessedLetter}
+                />
             </div>
         </div>
     );
