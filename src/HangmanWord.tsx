@@ -11,16 +11,19 @@ const containerStyle: React.CSSProperties = {
 
 const letterStyle: React.CSSProperties = {
     borderBottom: "0.1em solid black",
-
 }
 
+
 const HangmanWord = () => {
-    const word = "test"
-    return (
+    const word = "test";
+    const guessedLetters= ["t", "e"];
+
+
+    return(
         <div style={containerStyle}>
             {word.split("").map((letter, index) => (
-                <span style={letterStyle}>
-                    <span>
+                <span key={index} style={letterStyle}>
+                    <span style={{visibility: guessedLetters.includes(letter) ? "visible" : "hidden"}}>
                        {letter}
                     </span>
                 </span>

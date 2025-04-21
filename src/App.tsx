@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState, CSSProperties, FC } from 'react';
 import words from './wordlList.json';
 import HangmanDrawing from './HangmanDrawing';
 import HangmanWord from './HangmanWord';
 import Keyboard from './Keyboard';
 
 
-const containerStyle: React.CSSProperties = {
+
+
+const containerStyle: CSSProperties = {
     maxWidth: "800px",
     display: "flex",
     flexDirection: "column",
@@ -14,13 +16,13 @@ const containerStyle: React.CSSProperties = {
     alignItems: "center",
 };
 
-const titleStyle: React.CSSProperties = {
+const titleStyle: CSSProperties = {
     fontSize: "2rem",
     textAlign: "center",
 };
 
-const App = () => {
-    const [wordToGuess, setWordToGuess] = useState(() => {
+const App: FC = () => {
+    const [wordToGuess, setWordToGuess] = useState<string>(() => {
         return words[Math.floor(Math.random() * words.length)];
     });
 
@@ -31,7 +33,9 @@ const App = () => {
             <div style={titleStyle}>Lose Win</div>
             <HangmanDrawing/>
             <HangmanWord />
-            <Keyboard />
+            <div style={{alignSelf: "stretch"}}>
+                <Keyboard/>
+            </div>
         </div>
     );
 };
