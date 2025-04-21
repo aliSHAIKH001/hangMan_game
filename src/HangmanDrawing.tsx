@@ -6,7 +6,7 @@ const bottomBar: React.CSSProperties = {
     backgroundColor: "black"
 }
 const upRightBar: React.CSSProperties = {
-    height: "400px",
+    height: "300px",
     width: "10px",
     backgroundColor: "black",
     marginLeft: "120px",
@@ -32,7 +32,7 @@ const headStyle: React.CSSProperties = {
     border: "10px solid black",
     position: "absolute",
     top: "50px",
-    right: "-30px"
+    right: "-20px"
 }
 const HEAD = (
     <div style={headStyle}/>
@@ -100,17 +100,15 @@ const leftLegStyle: React.CSSProperties = {
 const LEFT_LEG = (
     <div style={leftLegStyle}></div>
 )
+const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
+type HangManDrawingProps = {
+    numberOfGuesses: number
+}
 
-const HangmanDrawing = () => {
+const HangmanDrawing = ({numberOfGuesses}: HangManDrawingProps) => {
     return (
         <div style={{position: "relative"}}>
-            {HEAD}
-            {BODY}
-            {RIGHT_ARM}
-            {LEFT_ARM}
-            {RIGHT_LEG}
-            {LEFT_LEG}
-
+            {BODY_PARTS.slice(0, numberOfGuesses)}
             <div style={smallHangingBar}/>
             <div style={topBar}/>
             <div style={upRightBar}/>
